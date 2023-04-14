@@ -18,21 +18,25 @@ function sortByHeight(arr) {
   const sortedArray = arr.filter((num) => num !== -1).sort((a, b) => a - b);
 
   //get indexes where -1 was located
-  arr.forEach((num, index) => {
-    if (num === -1) {
+  for (let index = 0; index < arr.length; index++) {
+    if (arr[index] === -1) {
       indexArray.push(index);
     }
-  });
+  }
+  
+/*  arr.forEach((num, index) => {
+      if (num === -1) {
+      indexArray.push(index);
+      }
+    }); */
 
-  //to insert -1 to the place where is was located previously
+  //to insert -1 to the place where is was located
   indexArray.forEach((index) => {
     sortedArray.splice(index, 0, -1);
   });
 
   return sortedArray;
 }
-
-sortByHeight(arr);
 
 module.exports = {
   sortByHeight
