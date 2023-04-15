@@ -16,30 +16,30 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function repeater(str, options) {
-    // set default values
+    // set default values for option types
     let repeatTimes = options.repeatTimes || 1;
     let separator = options.separator || '+';
     let addition = options.addition !== undefined ? options.addition : '';
     let additionRepeatTimes = options.additionRepeatTimes || 1;
     let additionSeparator = options.additionSeparator || '|';
   
-    // convert str and addition to string
+    // convert str and addition to string in case they are not
     str = String(str);
     addition = String(addition);
   
-    // repeat addition string
-    let additionString = '';
+    // to define addition str
+    let additionStr = '';
     for (let i = 1; i <= additionRepeatTimes; i++) {
-      additionString += addition;
+      additionStr += addition;
       if (i < additionRepeatTimes) {
-        additionString += additionSeparator;
+        additionStr += additionSeparator;
       }
     }
   
-    // repeat str and additionString
+    // repeat str + additionStr
     let result = '';
     for (let i = 1; i <= repeatTimes; i++) {
-      result += str + additionString;
+      result += str + additionStr;
       if (i < repeatTimes) {
         result += separator;
       }
